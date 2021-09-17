@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Mars Weather</title>
+</head>
+<body>
+    <div class="container">
+        <% if(!logedin) { %>
+        <div class="login">
+            <div class="sign-in">
+                <form action="/signin" method="POST">
+                    <input type="email" required placeholder="Email" name="username"><br>
+                    <input type="password" required placeholder="Passowrd" name="password"><br>
+                    <input type="submit" required value="Sign In"><span>&nbsp;<%= error %></span>
+                </form>
+            </div>
+            <div class="vline"></div>
+            <div class="sign-up">
+                <form action="/signup" method="POST">
+                    <input type="email" required placeholder="Email" name="username"><br>
+                    <input type="password" required placeholder="Passowrd" name="password"><br>
+                    <input type="tel" required placeholder="Phone Number" name="phone"><br>
+                    <input type="submit" value="Sign Up"><span>&nbsp;<%= rErr %></span>
+                </form>
+            </div>
+        </div>
+        <% } %>
+        <div class="addr">
+            <input type="text" value="<%= fullAddr %>" readonly="true"><% if(logedin) { %><a href="/logout" class="logout">Log Out</a><%}%>
+        </div>
+    </div>
+</body>
+</html>
