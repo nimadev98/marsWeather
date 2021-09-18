@@ -48,7 +48,7 @@ app.use("/api/mars", async (req, res, next) => {
   ////////////////////////////////////////////////////////
   const allUser = await usersModel.getToken();
   const allTokens = allUser.map((user) => user.apiKey);
-  if (!req.query.token && !allTokens.includes(req.query.token)) {
+  if (!allTokens.includes(req.query.token)) {
     req.query.token = "free";
     const person = await usersModel.getPerson(req.ip);
     if (!person) {

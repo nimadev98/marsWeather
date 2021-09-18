@@ -54,8 +54,9 @@ async function plusP(ip) {
 }
 
 async function plusU(token) {
-  const user = await getToken({ apiKey: token });
-  const count = user[0].count;
+  const user = await User.findOne({ apiKey: token });
+  console.log(user);
+  const count = user.count;
   await User.updateOne({ apiKey: token }, { count: count + 1 });
 }
 
